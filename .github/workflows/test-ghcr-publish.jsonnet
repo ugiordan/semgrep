@@ -19,7 +19,7 @@ local gha = import 'libs/gha.libsonnet';
         contents: 'read',
         packages: 'write',  // Required for pushing to GHCR
       },
-      steps: actions.checkout_with_submodules(ref=gha.ref_expr) + [
+      steps: actions.checkout_with_submodules() + [
         // Only login to GHCR for this test
         actions.ghcr_login_step,
         {
