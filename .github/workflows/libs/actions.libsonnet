@@ -209,6 +209,16 @@ local merge_base_output = '${{ steps.get-merge-base.outputs.commit }}';
     },
   },
 
+  // Login to GitHub Container Registry (ghcr.io)
+  ghcr_login_step: {
+    uses: 'docker/login-action@v3',
+    with: {
+      registry: 'ghcr.io',
+      username: '${{ github.actor }}',
+      password: '${{ secrets.GITHUB_TOKEN }}',
+    },
+  },
+
   // ---------------------------------------------------------
   // Artifact management
   // ---------------------------------------------------------
